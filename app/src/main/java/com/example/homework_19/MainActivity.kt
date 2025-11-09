@@ -1,12 +1,14 @@
 package com.example.homework_19
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,6 +64,14 @@ class MainActivity : AppCompatActivity() {
 
         // Переход к новому фрагменту
         viewPager.setCurrentItem(adapter.itemCount - 1, true)
+
+        Snackbar.make(
+            findViewById<View>(android.R.id.content),
+            "Фрагмент добавлен",
+            Snackbar.LENGTH_LONG
+        ).setAction("ОТМЕНА") {
+            removeCurrentFragment()
+        }.show()
     }
 
 
